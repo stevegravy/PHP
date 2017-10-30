@@ -9,7 +9,7 @@
 <body>
 	<h1>Bonjour <?php echo $_GET['nom']; ?>!</h1>
 	
-	<!---0. Représente en code le fait de devoir ranger sa chambre si elle est sale.--->
+	
 	<p><?php 
 		$prenom = 'Steve';
 		$age = 39;
@@ -21,8 +21,7 @@
 	</p>
 	
 	
-	
-	<!-----1. Affiche un message de salutation différent selon l'heure courante.----->
+	<!---0. Représente en code le fait de devoir ranger sa chambre si elle est sale.--->
 	<p>
 		<?php 
 			$chambre_est_salle = false;
@@ -37,17 +36,91 @@
 		?>
 	</p>
 	
-	<!------2. Affiche une salutation différente selon l'âge de l'utilisateur.------->
+   
+    <!-----1. Affiche un message de salutation différent selon l'heure courante.----->
 	<p>
 		<?php
 			$heure = 9
 				
-			if($heure < 12){
+			if($heure >= 5 && $heure <= 9){
 				$comment = 'Bonjour';
-			}elseif($heure >=12 && <18){
-				$comment = 'Bonne journée';
-			}elseif($heure = 
+			}
+            elseif($heure >9 && <= 12){
+                $comment = 'Bonne journée';
+			}
+            else if($heure >12 && <=16){
+                $comment = 'Bonne après midi';
+            }
+            elseif($heure >16 && <=21){
+                $comment = 'Bonne soirée';
+            }
+            else if ($heure >21 && <5){
+                $comment = 'Bonne nuit';
+            }
+        
+            echo $comment;
 		?>
 	</p>
+	
+	
+	
+    <!------2. Affiche une salutation différente selon l'âge de l'utilisateur.------->
+
+
+
+    <form action= "index.php" method="post">
+        <div class="age">
+           <h1>Dites nous quel âge vous avez</h1>
+            <label for="age">âge</label>
+            <input type="number" name="age">
+        </div>
+
+
+    </form>
+    <?php
+        $age = $POST["age"]){
+            if ($age<12){
+                echo('Salut, petit');
+            }
+            else if ($age >=12 && $age<18){
+                echo('salut, l\'ado');
+            }
+            else if ($age>=18 && <115){
+                echo('Salut, l\'adulte');
+            }
+            else if ($age>=115){
+                echo('Hey, toujours vivant? Bien joué...')
+            }
+        }
+	?>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
