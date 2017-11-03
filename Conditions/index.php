@@ -65,6 +65,7 @@
         	<button type="submit">Envoyer</button>
         </div>
     </form>
+    
     <?php
         $age = $_POST["age"];
 		$genre = $_POST["genre"];
@@ -119,7 +120,108 @@
             }
 		
 	?>
-
+	
+	
+	
+	<!----5. Retour à l'école de l'échec et du jugement------->
+	
+	<form action= "#" method="post">
+        <div class="moyenne">
+           <h1>quelle a été votre moyenne?</h1>
+            <label for="age">Moyenne</label>
+            <input type="number" name="moyenne">
+        </div>
+        <div class = "bouton">
+        	<button type="submit">Envoyer</button>
+        </div>
+    </form>
+	<?php
+		$moyenne = $_POST["moyenne"];
+		if ($moyenne>=1 && $moyenne<=3){
+			echo('Ce travaille est nul!');
+		}else if ($moyenne>=4 && $moyenne<=9){
+			echo('Ce travail n\'est pas terrible');
+		}else if ($moyenne == 10){
+			echo('Tout juste!');
+		}else if($moyenne>=11 && $moyenne <=14){
+			echo('C\'est pas mal');
+		}else if($moyenne >= 15 && $moyenne<= 18){
+			echo('Bravo!');
+		}else if ($moyenne >= 19 && $moyenne<=20){
+			echo('Police! Arretez ce tricheur!');
+		}
+	?>
+	<!---6. OU avec SWITCH------->
+	<?php
+	$moyenne = $_POST["moyenne"];
+	
+	switch($moyenne){
+		case 1:
+			echo 'Ce travaille est nul!';
+			break;
+		case 2:
+			echo 'Ce travaille est nul!';
+			break;
+		case 3:
+			echo 'Ce travaille est nul!';
+			break;
+		case 4:
+			echo 'Ce travaille est nul!';
+			break;
+		case 5:
+			echo 'Ce travaille est nul!';
+			break;
+		case 6:
+			echo 'Ce travail n\'est pas terrible';
+			break;
+		case 7:
+			echo 'Ce travail n\'est pas terrible';
+			break;
+		case 8:
+			echo 'Ce travail n\'est pas terrible';
+			break;
+		case 9:
+			echo 'Ce travail n\'est pas terrible';
+			break;
+		case 10:
+			echo 'Tout juste!';
+			break;
+		case 11:
+			echo 'C\'est pas mal';
+			break;
+		case 12:
+			echo 'C\'est pas mal';
+			break;
+		case 13:
+			echo 'C\'est pas mal';
+			break;
+		case 14:
+			echo 'C\'est pas mal';
+			break;
+		case 15:
+			echo 'Bravo!';
+			break;
+		case 16:
+			echo 'Bravo!';
+			break;
+		case 17:
+			echo 'Bravo!';
+			break;
+		case 18:
+			echo 'Bravo!';
+			break;
+		case 19:
+			echo 'Ce travaille est nul!';
+			break;
+		case 20:
+			echo 'Ce travaille est nul!';
+			break;
+		}
+	?>
+	
+	
+	
+	
 </body>
 </html>
 
