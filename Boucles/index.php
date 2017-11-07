@@ -29,7 +29,7 @@
 	
 	
 		$prenom_classe = array ('Nico1', 'Nico2', 'Antoine', 'Caro', 'Steve', 'Delphine', 'Omar', 'Jimmy', 'Gaetan', 'Valerian');
-		foreach ($prenom_classe as &value){
+		foreach ($prenom_classe as &$value){
 			echo $value . '<br>';
 		}
 	?>
