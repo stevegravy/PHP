@@ -32,7 +32,18 @@
 		foreach ($prenom_classe as &$value){
 			echo $value . '<br>';
 		}
+		
 	?>
 	
+	<select>
+		<option value ="">Select...</option>;
+	<?php
+		$nom_pays = array ('BE'=>'Belgique', 'FR'=>'France', 'IT'=>'Italie', 'LI'=>'Linchtenchtein', 'VE'=>'Venezuela', 'CO'=>'Colombie', 'ES'=>'Espagne', 'SU'=>'Suède', 'PO'=>'Portugal', 'FI'=>'Finlande');
+	
+		foreach ($nom_pays as $key => $value){
+			echo '<option value = "" ' .$key.'>' .$value. '</option>';
+		}
+	?>
+	</select>
 </body>
 </html>
