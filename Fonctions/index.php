@@ -42,31 +42,36 @@
 			return $add;
 		}
 		else{
-			echo('Erreur, argument non numérique !');
+			echo('Erreur, argument non numérique !<br>');
 		}
 	}
-	echo addition('n',3);
+	echo addition('u',3) . '<br>';
 	
 	
 	
-	/*Fonction initiale*/
-	function initiales($nom){
+	/*Fonction afficher les initiales*/
+	/*function initiales($nom){
     $n_mot = explode(" ",$nom);
-		
-    foreach($n_mot as $lettre){
-        $nom_initiale .= $lettre{0}.'.';
-    }
+    	foreach($n_mot as $lettre){
+        	$nom_initiale . = $lettre{0} . '.';
+    	}
     return strtoupper($nom_initiale);
 	}
-	echo initiales('In code we trust!');
+	echo initiales('In code we trust!');*/
 	
 	
 	/*Remplacer lettres*/
 	function remplacement(){
 		$tab = array ('caecotrophie', 'chaenichthys', 'microsphaera', 'sphaerotheca');
-		
-		
+		foreach ($tab as $key){
+			$new_tab = str_replace ("ae", "æ", $key);
+			echo "<pre>";
+			echo $new_tab;
+			echo "</pre>";
+		}
 	}
+	remplacement();
+	
 	
 	?>
 	
