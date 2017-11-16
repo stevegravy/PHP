@@ -42,10 +42,10 @@
 			return $add;
 		}
 		else{
-			echo('Erreur, argument non numérique !<br>');
+			echo('Erreur, argument non numérique !<pre>');
 		}
 	}
-	echo addition('u',3) . '<br>';
+	echo addition('u',3) . '<pre>';
 	
 	
 	
@@ -67,11 +67,52 @@
 			$new_tab = str_replace ("ae", "æ", $key);
 			echo "<pre>";
 			echo $new_tab;
-			echo "</pre>";
 		}
 	}
 	remplacement();
 	
+	/*Remplacer lettre 2*/
+	function diphtongue(){
+		$tableau = array ('cæcotrophie', 'chænichthys', 'microsphæra', 'sphærotheca');
+		foreach ($tableau as $i){
+		$new_tableau = str_replace ('æ', 'ae', $i);
+		echo '<pre>';
+		echo $new_tableau;
+		}
+	}
+	
+	diphtongue();
+	
+	
+	
+	/*Messgae utilisateur*/
+	function message_utilisateur(){
+		$adresse_mail = 'stevegravy@hotmail.com';
+		$html = '<div class="warning">Adresse email incorrecte.</div>';
+		if($adresse_mail == 'steve.gravy@hotmail.com'){
+			echo '<pre>';
+			echo('C\'est bien Billy, tu as tappé la bonne adresse!');
+		}else{
+			echo '<pre>';
+			echo $html;
+		}
+	}
+	
+	message_utilisateur();
+	
+	
+	
+	/*Mots aléatoires*/
+	function aleatoire(){
+		$lettre = array ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
+		$num = rand(0,25);
+		
+		for($i=1; $i<=5; $i++){
+			echo ($lettre[$i]);
+		}
+	}
+	
+	aleatoire();
 	
 	?>
 	

@@ -34,7 +34,9 @@
         echo $donnees['bas'];
         echo '</td><td>';
         echo $donnees['haut'];
-        echo '</td></tr>';
+        echo '</td>';
+		echo '<td><input type="checkbox" name="delete[]" value="delete"/></td>';
+		echo '</tr>';
       
 	}
 	echo "</table>";
@@ -48,7 +50,7 @@
 		<p>
 			<label>Entrez une ville :</label><input type="text" name="ville" /><br>
 			<label>Température minimale</label><input type="number" name="bas" /><br>
-			<label>Température maximale</label><input type="number" name="bas" /><br>
+			<label>Température maximale</label><input type="number" name="haut" /><br>
 
 			<button action = "submit">Submit</button>
 
@@ -64,10 +66,37 @@
 	$bas = $_POST['bas'];
 	$haut = $_POST['haut'];
 	
-	$ville->exec('INSERT INTO meteo(ville)');
-	$basville->exec('INSERT INTO meteo(bas)');
-	$haut->exec('INSERT INTO meteo(haut)');
+	if (isset($_POST)){
+		$bdd->query("INSERT INTO `meteo`(`ville`, `haut`, `bas`) VALUES ('$ville','$haut','$bas')");
+	}
+	
+	
 ?>
+	
+	
+<!---cocher des cases------>
+		
+<?php
+	if(isset($_POST["Delete"])){
+    $box=$_POST['suppr'];
+    while(list($key,$val) = @each($box)){
+    $bd->query("DELETE FROM ubeer-mail WHERE mail='$val'");
+    header('location:admin.php');
+      }
+    }
+    $resultat->closeCursor();
+?>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </body>
