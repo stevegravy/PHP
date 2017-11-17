@@ -24,50 +24,57 @@
 
 	$resultat = $bdd->query("SELECT * FROM meteo");
 	$donnees = $resultat->fetch();
-	while ($donnees = $resultat->fetch()){
-		echo "<table>";
-		//On affiche les données dans le tableau
-    
-        echo "<tr><td>";
-        echo $donnees['ville'];
-        echo '</td><td>';
-        echo $donnees['bas'];
-        echo '</td><td>';
-        echo $donnees['haut'];
-        echo '</td>';
-		echo '<td><input type="checkbox" name="delete[]" value="delete"/></td>';
-		echo '</tr>';
-      
-	}
-	echo "</table>";
-
-	$resultat->closeCursor();
-
+	
 ?>
 
-	<form method="post" action="">
+<form method="post" action="">
+		<table>
 
-		<p>
-			<label>Entrez une ville :</label><input type="text" name="ville" /><br>
-			<label>Température minimale</label><input type="number" name="bas" /><br>
-			<label>Température maximale</label><input type="number" name="haut" /><br>
+	<?php
+		while ($donnees = $resultat->fetch()){
+			//On affiche les données dans le tableau
 
-			<button action = "submit">Submit</button>
+			echo "<tr><td>";
+			echo $donnees['ville'];
+			echo '</td><td>';
+			echo $donnees['bas'];
+			echo '</td><td>';
+			echo $donnees['haut'];
+			echo '</td>';
+			echo "<td><input type='checkbox' name='delete[]' value='{$donnees['ville']}'/></td>";
+			echo '</tr>';
 
-		</p>
+		}
+		$resultat->closeCursor();
+	?>
+	
+	</table>
 
+	<button action = 'submit'>Submit</button>
+</form>
 
-	</form>
+<form method="post" action="">
+	<p>
+		<label>Entrez une ville :</label><input type="text" name="ville" /><br>
+		<label>Température minimale</label><input type="number" name="bas" /><br>
+		<label>Température maximale</label><input type="number" name="haut" /><br>
+
+		<button action = "submit">Submit</button>
+
+	</p>
+</form>
 	
 
 <?php
-	
-	$ville = $_POST['ville'];
+//	extract($_POST);
+	$delete = $_POST['delete'];
+	$villes = $_POST['ville'];
+			var_dump($villes);
 	$bas = $_POST['bas'];
 	$haut = $_POST['haut'];
 	
 	if (isset($_POST)){
-		$bdd->query("INSERT INTO `meteo`(`ville`, `haut`, `bas`) VALUES ('$ville','$haut','$bas')");
+		$bdd->query("INSERT INTO `meteo`(`ville`, `haut`, `bas`) VALUES ('$villes','$haut','$bas')");
 	}
 	
 	
@@ -77,14 +84,16 @@
 <!---cocher des cases------>
 		
 <?php
-	if(isset($_POST["Delete"])){
-    $box=$_POST['suppr'];
-    while(list($key,$val) = @each($box)){
-    $bd->query("DELETE FROM ubeer-mail WHERE mail='$val'");
-    header('location:admin.php');
-      }
+	if(isset($_POST['delete'])){
+
+		
+		foreach($delete as $ville){
+			$bdd->exec("DELETE FROM meteo where ville='$ville'");
+		}
+		header("Refresh:0");
     }
     $resultat->closeCursor();
+		
 ?>
 	
 	
